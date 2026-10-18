@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  /* chart paper: a faint grid, like the paper an ECG prints on */
+  body {
+    @apply bg-ward font-sans text-ink antialiased;
+    font-size: 16.5px;
+    line-height: 1.55;
+    background-image:
+      radial-gradient(900px 500px at 0% -10%, rgba(29, 111, 214, 0.10), transparent 60%),
+      radial-gradient(800px 500px at 100% 110%, rgba(19, 150, 108, 0.08), transparent 60%),
+      linear-gradient(rgba(29, 111, 214, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(29, 111, 214, 0.05) 1px, transparent 1px);
+    background-size: auto, auto, 24px 24px, 24px 24px;
+    background-attachment: fixed;
+  }
+  h1, h2, h3 { @apply font-display tracking-tight text-ink; }
+  ::selection { background: #cfe2fb; }
+  :focus-visible { outline: 3px solid rgba(29, 111, 214, 0.55); outline-offset: 3px; border-radius: 10px; }
+}
+
+@layer components {
+  .sheet { @apply rounded-[22px] border border-mist bg-white shadow-sheet; }
+  .btn-solid {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-signal px-6 py-3 text-base font-semibold text-white shadow-[0_8px_20px_-8px_rgba(29,111,214,0.7)] transition hover:-translate-y-0.5 hover:bg-signal-deep disabled:translate-y-0 disabled:cursor-not-allowed disabled:opacity-45 disabled:shadow-none;
+  }
+  .btn-line {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-mist bg-white px-5 py-2.5 text-base font-semibold text-ink transition hover:border-signal hover:text-signal-deep disabled:cursor-not-allowed disabled:opacity-45;
+  }
+  .field {
+    @apply w-full rounded-2xl border-2 border-mist bg-white px-4 py-3 text-base text-ink transition placeholder:text-ink-mute/70 focus:border-signal focus:outline-none focus:ring-4 focus:ring-signal/15;
+  }
+  .num { font-variant-numeric: tabular-nums; }
+  /* landing fly-through: layers fade with the scene's --o, set per frame from script */
+  .fade { opacity: var(--o, 1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}

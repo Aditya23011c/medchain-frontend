@@ -33,3 +33,10 @@ A light hospital identity: ward-white surfaces on chart-paper grid, scrub-navy i
 ## Contract notes for the backend lead
 
 Assumed endpoints: `POST /consent/request`, `POST /consent/verify`, `GET /reports/:id/status`, `GET /patients/:id/prescriptions?open=true`. The consent token is sent as `X-Consent-Token`. The upload stage order is the `STAGE_ORDER` list in `components/UploadStatus.jsx`.
+
+## Deploying to Vercel
+
+- Root Directory: the folder that contains `package.json` and `index.html` (this folder).
+- Framework preset: Vite. Build command `npm run build`. Output directory `dist`.
+- Environment variable (the `.env` file is not committed): `VITE_USE_MOCK=true` for the demo build. For the real backend set `VITE_USE_MOCK=false` and `VITE_API_URL`.
+- `vercel.json` rewrites every path to `index.html` so `/login`, `/doctor` etc. work on refresh.
