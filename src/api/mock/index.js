@@ -68,3 +68,10 @@ export async function getReportStatus(reportId) {
 
 export async function listOpenPrescriptions() { await wait(); return openPrescriptions; }
 export async function createDispense() { await wait(700); return { dispense_id: `d_${Date.now()}` }; }
+
+// Demo trigger: an email containing "taken" returns a 409.
+export async function register({ email }) {
+  await wait(900);
+  if (/taken/i.test(email)) fail(409, 'An account with this email already exists. Try signing in instead.');
+  return { provider_id: `prov_${Date.now()}`, status: 'pending_verification' };
+}

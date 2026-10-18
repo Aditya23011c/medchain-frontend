@@ -3,6 +3,7 @@ import { useAuth, homeFor } from '../context/AuthContext.jsx';
 import RoleGuard from './RoleGuard.jsx';
 import Login from '../pages/Login.jsx';
 import Landing from '../pages/Landing.jsx';
+import Register from '../pages/Register.jsx';
 import DoctorDashboard from '../pages/doctor/DoctorDashboard.jsx';
 import ConsentStep from '../pages/doctor/ConsentStep.jsx';
 import PatientRecord from '../pages/doctor/PatientRecord.jsx';
@@ -25,6 +26,7 @@ export default function AppRoutes() {
     <Routes>
       <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
 
       <Route element={<RoleGuard allow={['doctor']} />}>
         <Route path="/doctor" element={<DoctorDashboard />} />

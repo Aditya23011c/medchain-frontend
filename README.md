@@ -26,13 +26,14 @@ A light hospital identity: ward-white surfaces on chart-paper grid, scrub-navy i
 
 - Login: any email and password; password `wrong` shows the error state
 - Patient search: any name + 12 digits; a name with `nobody` = not found, `fail` = server error
+- Registration (`/register`): any valid details succeed; an email containing `taken` shows the already-registered error
 - Consent code: `123456`
 - Tamper demo: the 2022 Thyroid profile (`r_31`) shows the red hash-mismatch badge
 - Upload: a file name containing `blurry` ends in manual review, `error` shows a failure
 
 ## Contract notes for the backend lead
 
-Assumed endpoints: `POST /consent/request`, `POST /consent/verify`, `GET /reports/:id/status`, `GET /patients/:id/prescriptions?open=true`. The consent token is sent as `X-Consent-Token`. The upload stage order is the `STAGE_ORDER` list in `components/UploadStatus.jsx`.
+Assumed endpoints: `POST /auth/register` (body: role, name, license_no, email, phone, password; returns status `pending_verification`), `POST /consent/request`, `POST /consent/verify`, `GET /reports/:id/status`, `GET /patients/:id/prescriptions?open=true`. The consent token is sent as `X-Consent-Token`. The upload stage order is the `STAGE_ORDER` list in `components/UploadStatus.jsx`.
 
 ## Deploying to Vercel
 

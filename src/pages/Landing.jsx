@@ -11,7 +11,10 @@ export default function Landing() {
       <header className="fixed inset-x-0 top-0 z-40 border-b border-mist/70 bg-white/70 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
           <Brand />
-          <Link to="/login" className="btn-line !py-2">Sign in</Link>
+          <div className="flex items-center gap-2">
+            <Link to="/register" className="hidden px-3 text-[15px] font-semibold text-ink-soft hover:text-signal sm:inline">Create account</Link>
+            <Link to="/login" className="btn-line !py-2">Sign in</Link>
+          </div>
         </div>
       </header>
       <Flythrough />

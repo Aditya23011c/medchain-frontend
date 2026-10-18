@@ -19,3 +19,4 @@ export const uploadReport = ({ patientId, file }) => {
 export const getReportStatus = (id) => data(client.get(`/reports/${id}/status`));
 export const listOpenPrescriptions = (patientId) => data(client.get(`/patients/${patientId}/prescriptions`, { params: { open: true } }));
 export const createDispense = (body) => data(client.post('/dispense', body));
+export const register = (body) => data(client.post('/auth/register', body));

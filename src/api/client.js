@@ -19,7 +19,7 @@ client.interceptors.response.use(
       sessionStorage.clear();
       window.location.assign('/login');
     }
-    const message = err.response?.data?.message || 'Something went wrong. Try again.';
+    const message = err.response?.data?.message || (err.response ? 'Something went wrong. Try again.' : 'Cannot reach the server. Check VITE_API_URL, or set VITE_USE_MOCK=true for the demo.');
     return Promise.reject(Object.assign(new Error(message), { status }));
   }
 );
